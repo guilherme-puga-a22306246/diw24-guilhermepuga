@@ -27,7 +27,7 @@ body {
   align-items: center;
 
   /* Fundo e Estética */
-  background: url('https://pixabay.com/photos/disney-autumn-goofy-still-life-3761359/');
+  background: url('https://cdn.pixabay.com/photo/2016/08/24/17/31/skeletons-1617539_1280.jpg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
@@ -44,4 +44,5 @@ main {
   /* Fundo */
   background: whitesmoke;
 }
+
 
