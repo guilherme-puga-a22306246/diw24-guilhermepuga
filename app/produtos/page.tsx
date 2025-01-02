@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Product } from '../models/interfaces'
 import useSWR from 'swr'
 import Card from '../../components/Card/Card'
@@ -19,16 +19,123 @@ export default function Page() {
     fetcher
   )
 
+  const [search, setSearch] = useState('')
+  const [filteredData, setFilteredData] = useState<Product[]>([])
+  const [cart, setCart] = useState<Product[]>([])
+
+  // Efeito para filtrar produtos
+  useEffect(() => {
+    if (data) {
+      const filtered = data.filter(product =>
+        product.title.toLowerCase().includes(search.toLowerCase())
+      )
+      setFilteredData(filtered)
+    }
+  }, [search, data])
+
+  // Efeito para carregar carrinho do localStorage
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cart')
+    if (savedCart) {
+      setCart(JSON.parse(savedCart))
+    }
+  }, [])
+
+  // Efeito para salvar carrinho no localStorage
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
+
+  // Função para adicionar ao carrinho
+  const addToCart = (product: Product) => {
+    setCart(prevCart => [...prevCart, product])
+  }
+
+  // Função para comprar produtos
+  const buy = () => {
+    fetch("/api/deisishop/buy", {
+      method: "POST",
+      body: JSON.stringify({
+        products: cart.map(product => product.id),
+        name: "",
+        student: false,
+        coupon: ""
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    }).then(() => { // Removido o parâmetro 'response' não utilizado
+      setCart([]) // Limpa o carrinho após a compra
+      alert('Compra realizada com sucesso!') // Feedback para o usuário
+    }).catch(() => {
+      console.log("error ao comprar")
+      alert('Erro ao realizar a compra. Tente novamente.') // Feedback de erro
+    })
+  }
+
   if (error) return <div className={styles.error}>Erro ao carregar os produtos: {error.message}</div>
   if (isLoading) return <div className={styles.loading}>Carregando...</div>
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Produtos</h1>
+      
+      <div className={styles.searchContainer}>
+        <input
+          type="text"
+          placeholder="Pesquisar produtos..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className={styles.searchInput}
+        />
+      </div>
+
+      {/* Mostrar quantidade de itens no carrinho */}
+      <div className={styles.cartInfo}>
+        Itens no carrinho: {cart.length}
+      </div>
+
       <div className={styles.grid}>
-        {data?.map(product => (
-          <Card key={product.id} product={product} />
+        {filteredData.map(product => (
+          <Card 
+            key={product.id} 
+            product={product} 
+            onAddToCart={addToCart}
+          />
         ))}
+      </div>
+
+      {/* Seção do carrinho */}
+      <div className={styles.cartSection}>
+        <h2>Carrinho</h2>
+        <div className={styles.cartGrid}>
+          {cart.map((product, index) => (
+            <Card 
+              key={`${product.id}-${index}`} 
+              product={product} 
+              onAddToCart={addToCart}
+              isInCart
+            />
+          ))}
+        </div>
+        {cart.length > 0 && (
+          <div className={styles.cartActions}>
+            <div className={styles.cartTotal}>
+              Total: $ {cart.reduce((sum, product) => sum + product.price, 0).toFixed(2)}
+            </div>
+            <button 
+              className={styles.buyButton}
+              onClick={buy}
+            >
+              Comprar
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

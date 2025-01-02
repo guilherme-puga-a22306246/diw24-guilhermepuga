@@ -5,9 +5,11 @@ import styles from './Card.module.css'
 
 interface CardProps {
   product: Product
+  onAddToCart: (product: Product) => void
+  isInCart?: boolean
 }
 
-const Card = ({ product }: CardProps) => {
+const Card = ({ product, onAddToCart, isInCart }: CardProps) => {
   const renderStars = (rate: number) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -49,6 +51,14 @@ const Card = ({ product }: CardProps) => {
             ({product.rating.count} reviews)
           </span>
         </div>
+        {!isInCart && (
+          <button 
+            className={styles.addToCartButton}
+            onClick={() => onAddToCart(product)}
+          >
+            Adicionar ao Carrinho
+          </button>
+        )}
       </div>
     </div>
   )
