@@ -18,13 +18,11 @@ body {
   /* Box Model */
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
 
   /* Layout e Posicionamento */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   /* Fundo e Estética */
   background: url('https://cdn.pixabay.com/photo/2016/08/24/17/31/skeletons-1617539_1280.jpg');
@@ -34,15 +32,9 @@ body {
 }
 
 main {
-  /* Reset e Box Model */
-  width: 320px;
-  height: 450px;
+  flex: 1;
+  width: 100%;
   padding: 20px;
-  border-radius: 20px;
-  overflow-y: auto;
-
-  /* Fundo */
-  background: whitesmoke;
+  /* Removido o background: whitesmoke */
+  background: transparent; /* Fundo transparente */
 }
-
-

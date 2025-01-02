@@ -1,8 +1,11 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ['cdn.jsdelivr.net'],
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+module.exports = nextConfig
 
 export default nextConfig;
 
@@ -11,3 +14,4 @@ module.exports = {
       domains: ['deisishop.pythonanywhere.com'], // Domínio permitido para imagens externas
   }, 
 };
+

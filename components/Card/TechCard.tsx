@@ -1,13 +1,25 @@
 import React from 'react'
 import Image from 'next/image'
-import { Product } from '../../app/models/interfaces'
-import styles from './Card.module.css'
+import styles from './TechCard.module.css'
 
-interface CardProps {
-  product: Product
+interface Rating {
+  rate: number
+  count: number
 }
 
-const Card = ({ product }: CardProps) => {
+interface Technology {
+  id: number
+  title: string
+  image: string
+  description: string
+  rating: Rating
+}
+
+interface TechCardProps {
+  tech: Technology
+}
+
+const TechCard = ({ tech }: TechCardProps) => {
   const renderStars = (rate: number) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -24,29 +36,21 @@ const Card = ({ product }: CardProps) => {
     <div className={styles.card}>
       <div className={styles.imageContainer}>
         <Image
-          src={product.image}
-          alt={product.title}
+          src={tech.image}
+          alt={tech.title}
           fill
           className={styles.image}
         />
       </div>
       <div className={styles.content}>
-        <h2 className={styles.title}>{product.title}</h2>
-        <p className={styles.description}>{product.description}</p>
-        <div className={styles.priceContainer}>
-          <span className={styles.price}>
-            $ {product.price.toFixed(2)}
-          </span>
-          <span className={styles.category}>
-            {product.category}
-          </span>
-        </div>
+        <h2 className={styles.title}>{tech.title}</h2>
+        <p className={styles.description}>{tech.description}</p>
         <div className={styles.ratingContainer}>
           <div className={styles.stars}>
-            {renderStars(Math.round(product.rating.rate))}
+            {renderStars(Math.round(tech.rating.rate))}
           </div>
           <span className={styles.ratingCount}>
-            ({product.rating.count} reviews)
+            ({tech.rating.count} review{tech.rating.count !== 1 ? 's' : ''})
           </span>
         </div>
       </div>
@@ -54,4 +58,4 @@ const Card = ({ product }: CardProps) => {
   )
 }
 
-export default Card
+export default TechCard

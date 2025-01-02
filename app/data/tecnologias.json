@@ -1,0 +1,124 @@
+{
+    "tecnologias": [
+      {
+        "id": 1,
+        "title": "HTML",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+        "description": "Linguagem de marcação para estruturar e apresentar conteúdo na web",
+        "rating": {
+          "rate": 4,
+          "count": 1
+        }
+      },
+      {
+        "id": 2,
+        "title": "CSS",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+        "description": "Linguagem de estilização que define a apresentação visual de documentos HTML",
+        "rating": {
+          "rate": 4,
+          "count": 1
+        }
+      },
+      {
+        "id": 3,
+        "title": "JavaScript",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        "description": "Linguagem de programação que permite criar conteúdo dinâmico e interativo",
+        "rating": {
+          "rate": 5,
+          "count": 1
+        }
+      },
+      {
+        "id": 4,
+        "title": "React.js",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        "description": "Biblioteca JavaScript para construir interfaces de usuário interativas",
+        "rating": {
+          "rate": 5,
+          "count": 1
+        }
+      },
+      {
+        "id": 5,
+        "title": "Next.js",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+        "description": "Framework React que oferece renderização híbrida e geração estática",
+        "rating": {
+          "rate": 4,
+          "count": 1
+        }
+      },
+      {
+        "id": 6,
+        "title": "GitHub",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        "description": "Plataforma de hospedagem de código e colaboração usando Git",
+        "rating": {
+          "rate": 5,
+          "count": 1
+        }
+      },
+      {
+        "id": 7,
+        "title": "JSON",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+        "description": "Formato leve de troca de dados, fácil de ler e escrever",
+        "rating": {
+          "rate": 4,
+          "count": 1
+        }
+      },
+      {
+        "id": 8,
+        "title": "API RESTful",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+        "description": "Arquitetura para desenvolvimento de web services seguindo princípios REST",
+        "rating": {
+          "rate": 4,
+          "count": 1
+        }
+      },
+      {
+        "id": 9,
+        "title": "Swagger",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+        "description": "Ferramenta para documentação e teste de APIs RESTful",
+        "rating": {
+          "rate": 3,
+          "count": 1
+        }
+      },
+      {
+        "id": 10,
+        "title": "GitHub Codespaces",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        "description": "Ambiente de desenvolvimento baseado em nuvem integrado ao GitHub",
+        "rating": {
+          "rate": 4,
+          "count": 1
+        }
+      },
+      {
+        "id": 11,
+        "title": "GitHub Pages",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        "description": "Serviço de hospedagem de sites estáticos direto do GitHub",
+        "rating": {
+          "rate": 4,
+          "count": 1
+        }
+      },
+      {
+        "id": 12,
+        "title": "Vercel",
+        "image": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+        "description": "Plataforma para deploy e hospedagem de aplicações Next.js",
+        "rating": {
+          "rate": 5,
+          "count": 1
+        }
+      }
+    ]
+  }
