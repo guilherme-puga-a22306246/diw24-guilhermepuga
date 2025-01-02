@@ -4,6 +4,7 @@ import { Product } from '../models/interfaces'
 import useSWR from 'swr'
 import Card from '../../components/Card/Card'
 import styles from './page.module.css'
+import Link from 'next/link' // Adicione esta importação
 
 const fetcher = async (url: string) => {
   const response = await fetch(url)
@@ -35,15 +36,19 @@ export default function Page() {
 
   // Efeito para carregar carrinho do localStorage
   useEffect(() => {
-    const savedCart = localStorage.getItem('cart')
-    if (savedCart) {
-      setCart(JSON.parse(savedCart))
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem('cart')
+      if (savedCart) {
+        setCart(JSON.parse(savedCart))
+      }
     }
   }, [])
 
   // Efeito para salvar carrinho no localStorage
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart))
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    }
   }, [cart])
 
   // Função para adicionar ao carrinho
@@ -69,12 +74,12 @@ export default function Page() {
         throw new Error(response.statusText);
       }
       return response.json();
-    }).then(() => { // Removido o parâmetro 'response' não utilizado
-      setCart([]) // Limpa o carrinho após a compra
-      alert('Compra realizada com sucesso!') // Feedback para o usuário
+    }).then(() => {
+      setCart([])
+      alert('Compra realizada com sucesso!')
     }).catch(() => {
       console.log("error ao comprar")
-      alert('Erro ao realizar a compra. Tente novamente.') // Feedback de erro
+      alert('Erro ao realizar a compra. Tente novamente.')
     })
   }
 
@@ -83,6 +88,11 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
+      {/* Botão para voltar */}
+      <Link href="/" className={styles.backButton}>
+        Voltar
+      </Link>
+
       <h1 className={styles.title}>Produtos</h1>
       
       <div className={styles.searchContainer}>
@@ -95,7 +105,6 @@ export default function Page() {
         />
       </div>
 
-      {/* Mostrar quantidade de itens no carrinho */}
       <div className={styles.cartInfo}>
         Itens no carrinho: {cart.length}
       </div>
@@ -110,7 +119,6 @@ export default function Page() {
         ))}
       </div>
 
-      {/* Seção do carrinho */}
       <div className={styles.cartSection}>
         <h2>Carrinho</h2>
         <div className={styles.cartGrid}>

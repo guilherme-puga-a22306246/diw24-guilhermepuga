@@ -1,11 +1,25 @@
+'use client'
 import React from 'react'
+import styles from './page.module.css'
+import Link from 'next/link'
 
-
-
-
-export default function page() {
-  return <>
-    <h1>React e Next.js</h1>
-    <p>Bem vindo a esta página linda de React e Next.js</p>
-  </>
+export default function Home() {
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>Bem-vindo à nossa loja!</h1>
+        <p className={styles.description}>
+          Explore nossa seleção de produtos e tecnologias.
+        </p>
+        <div className={styles.buttonContainer}>
+          <Link href="/produtos" className={styles.button}>
+            Ver Produtos
+          </Link>
+          <Link href="/tecnologias" className={styles.button}>
+            Ver Tecnologias
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
 }

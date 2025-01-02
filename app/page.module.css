@@ -1,0 +1,62 @@
+.container {
+    min-height: 100vh; /* Agora usa toda a altura da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  
+  .content {
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    backdrop-filter: blur(8px); /* Efeito de vidro fosco */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .title {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .description {
+    font-size: 1.25rem;
+    color: #e5e7eb;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+  
+  .button:active {
+    transform: translateY(0);
+  }
